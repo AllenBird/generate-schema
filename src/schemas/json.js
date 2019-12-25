@@ -183,6 +183,12 @@ function processObject(object, output, nested) {
 
     output.properties[key] = {}
     output.properties[key].type = type
+    /* 
+      keep value in mock
+      issue https://gitlab04.******.com/DT-FED/api-centre/issues/2
+      导入的数据value没有记录，是系统随机生成的，例如下面导入code是200，但是生成了随机数；需要自己在手动改一遍；建议直接使用导入的value
+    */
+    output.properties[key].mock = { mock: value }
 
     if (format) {
       output.properties[key].format = format
